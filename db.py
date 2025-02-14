@@ -7,7 +7,7 @@ def pripojeni_db():
             host='localhost',
             database='task_manager',
             user='root',
-            password='Vitaoros05'
+            password='password'
         )
         if connection.is_connected():
             print("Připojeno k databázi")
