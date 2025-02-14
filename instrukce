@@ -1,0 +1,63 @@
+Krok 1: Vytvoření databáze
+Otevřete příkazový řádek a připojte se k MySQL
+
+mysql -u root -p
+Zadejte heslo pro uživatele root (nebo jiného, pokud používáte jiný účet).
+
+Vytvořte databázi s názvem task_manager:
+
+sql
+
+CREATE DATABASE task_manager;
+Použijte tuto databázi pro další práci:
+
+sql
+
+USE task_manager;
+Vytvořte tabulku ukoly:
+
+sql
+CREATE TABLE IF NOT EXISTS ukoly (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nazev VARCHAR(255) NOT NULL,
+    popis TEXT NOT NULL,
+    stav ENUM('nezahájeno', 'probíhá', 'hotovo') DEFAULT 'nezahájeno',
+    datum_vytvoreni TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+Krok 2: Instalace závislostí
+Vytvořte soubor requirements.txt v kořenové složce projektu a přidejte do něj následující řádky:
+
+
+mysql-connector-python
+pytest
+Instalujte závislosti pomocí příkazu:
+
+bash
+
+pip install -r requirements.txt
+Krok 3: Spuštění programu
+Pro spuštění programu použijte následující příkaz:
+
+bash
+
+python main.py
+Program vás vyzve k zadání názvu a popisu úkolu. Příklad:
+
+markdown
+
+--- Hlavní menu ---
+1. Přidat úkol
+2. Zobrazit úkoly
+3. Aktualizovat úkol
+4. Odstranit úkol
+5. Ukončit program
+Vyberte možnost: 1
+Zadejte název úkolu: Koupit chléb
+Zadejte popis úkolu: Potřebuji koupit čerstvý chléb v obchodě blízko domu.
+Úkol byl úspěšně přidán.
+Krok 4: Spuštění testů (nepovinné)
+Pro ověření správnosti funkcí spusťte testy:
+bash
+
+pytest test_task_manager.py
+Testy zkontrolují správnou funkčnost funkcí, jako je přidávání, aktualizace a mazání úkolů.
